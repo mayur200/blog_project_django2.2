@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <meta charset="UTF-8">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!--    <link rel="stylesheet" href="{%static 'css/registration.css'%}">-->
+    <title>Title</title>
+</head>
+<body>
+    <form method="POST" class="post-form">
+        <input type="hidden" name="id" id="id" value="{{ posts.id }}"/>
+    {% csrf_token %}
+            {{form.as_p}}
+
+
+    <b> Blog is:</b>
+
+                        <article class="media content-section">
+                            <div class="media-body">
+<!--                                <input type="text" name="post" value="{{posts.post}}">-->
+                                <label>{{posts.post}}</label>
+                                <p></p>
+<!--                                <input type="text" name="author" value="{{posts.author}}">-->
+                                    <label>{{posts.author}}</label>
+                                <p></p>
+
+
+                                <img src="{{ posts.thumb.url }}"/>
+
+
+
+
+                            </div>
+                        </article>
+                        <a class="btn btn-primary" href="{% url 'sign_up:update-detail' pk=posts.pk %}" role="button">Edit</a>
+<!--        <input type="submit" class="btn btn-primary" href="{% url 'sign_up:update-detail' posts.id %}" value="Update"/>-->
+
+
+
+        </form>
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--     <h1>ALL Blogs</h1><hr>    <br />-->
+<!--    {% if post %}-->
+<!--            <b> Blog is:</b>-->
+
+
+<!--                        <article class="media content-section">-->
+<!--                            <div class="media-body">-->
+<!--                            <h3>  BLOG = {{post.post}}</h3>-->
+<!--                            <p class="article-content"> AUTHOR = {{post.author}}</p>-->
+<!--                            </div>-->
+<!--                        </article>-->
+
+
+<!--    {%else%}-->
+<!--    <b>NO blogs found</b>-->
+<!--    {%endif%}-->
+<form method="POST" action="{% url 'sign_up:edit-detail' pk=post.pk %}" class="site-form" enctype="multipart/form-data">
+    {% csrf_token %}
+<!--    {{form.as_p}}-->
+<!--    <input type="text" class="form-control" name="post" placeholder="Name">-->
+<!--    {{ form.post }}-->
+<!--    <input type="file" name="image">-->
+    {% if post %}
+
+     <input type="text" name="post" value="{{post.post}}">
+
+    <select name="Author" id="cars" >
+        <option value="{{post.author}}">{{post.author}}</option>
+    </select>
+
+
+
+    <p>{{ form.errors }}</p>
+
+    <p>{{ form.non_field_errors }}</p>
+
+
+    <img src="{{ post.thumb.url }}"/>
+
+        <input type="file" name="image">
+
+
+    {{post.pk}}
+
+    {%else%}
+    <b>NO blogs found</b>
+    {%endif%}
+
+
+
+<input type="submit" class="btn btn-primary" value="Update"/>
+
+</form>
+
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+mumbai
+<span>Hello, {{request.user}}</span>
+<span><a href="{% url 'sign_up:logout' %}">Log Out</a></span>
+<form method="POST" action="{% url 'sign_up:blog' %}" class="site-form" enctype="multipart/form-data">
+    {% csrf_token %}
+<!--    {{form.as_p}}-->
+<!--    <input type="text" class="form-control" name="post" placeholder="Name">-->
+    {{ form.post }}
+    <input type="file" name="image">
+
+    <button type="submit" class="btn btn-success btn-block" name="save">Submit</button>
+
+</form>
+     <h1>ALL Blogs</h1><hr>    <br />
+    {% if post %}
+            <b> Blog is:</b>
+
+                        {% for po in post %}
+                        <article class="media content-section">
+                            <div class="media-body">
+                            <h3> <a class="article-title" href="{% url 'sign_up:post-detail' po.id %}"> BLOG = {{po.post}}</a></h3>
+                            <p class="article-content"> AUTHOR = {{po.author}}</p>
+
+                            </div>
+                        </article>
+
+                        {%endfor%}
+
+
+    {%else%}
+    <b>NO blogs found</b>
+    {%endif%}
+
+
+
+</body>
+</html>
